@@ -1,0 +1,3 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-labelledby="t"><title id="t">Formaciones grises de Los Hoyos con una piscina natural</title>
+<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E0E7FF"/><stop offset="1" stop-color="#F3EDE4"/></linearGradient></defs>
+<rect width="600" height="360" fill="url(#g)"/><circle cx="120" cy="80" r="34" fill="#FDE68A"/><path d="M0 360 L0 200 L70 150 L130 210 L200 140 L260 220 L330 160 L400 220 L470 150 L540 210 L600 170 L600 360Z" fill="#6B7280"/><path d="M0 360 L0 260 L120 240 L250 270 L380 245 L600 265 L600 360Z" fill="#4B5563"/><ellipse cx="300" cy="320" rx="120" ry="22" fill="#38BDF8" opacity=".85"/></svg>
