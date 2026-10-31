@@ -9,7 +9,6 @@ Landing page de un emprendimiento **ficticio** de tours de astronomía, senderis
 - **Repositorio:** https://github.com/nelsonmarroquinor-arch/tatacoa-nocturna
 - **Video:** _pegar aquí el enlace de YouTube_
 
-![Captura del sitio en escritorio](docs/captura-escritorio-claro.png)
 
 ## 1. Planificación
 
