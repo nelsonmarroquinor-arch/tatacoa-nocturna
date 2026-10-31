@@ -1,0 +1,59 @@
+/* =========================================================
+   Tatacoa Nocturna · Hoja de estilos de entrada (Tailwind CSS 4)
+   Se compila con:  npx @tailwindcss/cli -i ./src/input.css -o ./dist/output.css --minify
+   ========================================================= */
+@import "tailwindcss";
+
+/* Modo oscuro controlado por clase (.dark en <html>), no por el sistema operativo */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------- Tokens del sistema de diseño ----------
+   Regla 60-30-10:
+   60 % arena   -> fondos generales            (--color-arena)
+   30 % noche   -> hero, franjas y pie         (--color-noche)
+   10 % terracota -> botones y llamados a la acción (--color-terracota)
+*/
+@theme {
+  /* Dominante (60 %) */
+  --color-arena: #FBF6EE;
+  --color-arena-200: #F1E6D6;
+  --color-tierra: #2B1D14;        /* texto principal sobre arena (15.1:1) */
+  --color-tierra-suave: #5C4A3D;  /* texto secundario sobre arena (7.8:1) */
+
+  /* Secundario (30 %) */
+  --color-noche: #1E1B4B;
+  --color-noche-900: #12112A;
+  --color-noche-700: #1C1B3A;
+  --color-luna: #F3EDE4;          /* texto sobre noche (13.7:1) */
+  --color-luna-suave: #C7C2E0;    /* texto secundario sobre noche (9.3:1) */
+
+  /* Acento (10 %) */
+  --color-terracota: #C2410C;     /* blanco sobre terracota 5.18:1 */
+  --color-terracota-oscuro: #9A3412;
+  --color-brasa: #FB923C;         /* acento en modo oscuro (8.1:1 sobre noche-900) */
+
+  /* Colores semánticos */
+  --color-exito: #15803D;
+  --color-error: #B91C1C;
+  --color-error-claro: #F87171;
+  --color-advertencia: #B45309;
+
+  /* Tipografía: máximo dos fuentes de Google Fonts */
+  --font-titulo: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-cuerpo: "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ---------- Estilos base ---------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-arena font-cuerpo text-tierra antialiased dark:bg-noche-900 dark:text-luna;
+  }
+  /* Respeta a quien prefiere menos movimiento */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  }
+}
