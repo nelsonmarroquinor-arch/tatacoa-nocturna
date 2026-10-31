@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tatacoa Nocturna · Tours de astronomía en el Desierto de la Tatacoa</title>
+  <meta name="description" content="Tours guiados de astronomía, senderismo y astrofotografía en el Desierto de la Tatacoa, Villavieja (Huila). Reserva tu noche de estrellas.">
+  <meta name="theme-color" content="#1E1B4B">
+
+  <!-- Aplica el tema guardado ANTES de pintar la página (evita el destello claro/oscuro) -->
+  <script>
+    (function () {
+      try {
+        var guardado = localStorage.getItem('tema');
+        var prefiereOscuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (guardado === 'oscuro' || (!guardado && prefiereOscuro)) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) { /* sin localStorage: se queda en modo claro */ }
+    })();
+  </script>
+
+  <!-- Máximo dos fuentes de Google Fonts: Sora (títulos) y Nunito Sans (texto) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS generado por Tailwind CLI (solo con las clases que se usan) -->
+  <link rel="stylesheet" href="./dist/output.css">
+  <link rel="icon" href="./assets/img/favicon.svg" type="image/svg+xml">
+</head>
+
+<body class="min-h-screen">
+  <!-- Enlace para saltar al contenido (accesibilidad con teclado) -->
+  <a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-terracota focus:px-4 focus:py-2 focus:text-white">Saltar al contenido</a>
+
+  <!-- =========================== NAVBAR =========================== -->
+  <header class="sticky top-0 z-50 border-b border-arena-200 bg-arena/95 backdrop-blur dark:border-noche-700 dark:bg-noche-900/95">
+    <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6" aria-label="Navegación principal">
+      <a href="#inicio" class="flex items-center gap-2 rounded-lg font-titulo text-lg font-bold text-tierra focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracota dark:text-luna">
+        <svg class="h-7 w-7 text-terracota dark:text-brasa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.6 6.3L21 9l-5 4.4L17.5 20 12 16.6 6.5 20 8 13.4 3 9l6.4-.7z"/></svg>
+        Tatacoa Nocturna
+      </a>
+
+      <!-- Enlaces en escritorio (md en adelante) -->
+      <ul class="hidden items-center gap-1 md:flex">
+        <li><a href="#tours" class="nav-link rounded-lg px-3 py-2 font-semibold text-tierra-suave transition-colors aria-[current=true]:bg-arena-200 aria-[current=true]:text-terracota-oscuro dark:aria-[current=true]:bg-noche-700 dark:aria-[current=true]:text-brasa hover:bg-arena-200 hover:text-tierra focus-visible:outline-2 focus-visible:outline-terracota dark:text-luna-suave dark:hover:bg-noche-700 dark:hover:text-luna">Tours</a></li>
+        <li><a href="#nosotros" class="nav-link rounded-lg px-3 py-2 font-semibold text-tierra-suave transition-colors aria-[current=true]:bg-arena-200 aria-[current=true]:text-terracota-oscuro dark:aria-[current=true]:bg-noche-700 dark:aria-[current=true]:text-brasa hover:bg-arena-200 hover:text-tierra focus-visible:outline-2 focus-visible:outline-terracota dark:text-luna-suave dark:hover:bg-noche-700 dark:hover:text-luna">Nosotros</a></li>
+        <li><a href="#preguntas" class="nav-link rounded-lg px-3 py-2 font-semibold text-tierra-suave transition-colors aria-[current=true]:bg-arena-200 aria-[current=true]:text-terracota-oscuro dark:aria-[current=true]:bg-noche-700 dark:aria-[current=true]:text-brasa hover:bg-arena-200 hover:text-tierra focus-visible:outline-2 focus-visible:outline-terracota dark:text-luna-suave dark:hover:bg-noche-700 dark:hover:text-luna">Preguntas</a></li>
+      </ul>
+
+      <div class="flex items-center gap-2">
+        <!-- Botón de modo oscuro -->
+        <button id="btn-tema" type="button" aria-pressed="false" aria-label="Activar modo oscuro"
+          class="flex h-11 w-11 items-center justify-center rounded-full border border-arena-200 text-tierra transition-colors hover:bg-arena-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota dark:border-noche-700 dark:text-luna dark:hover:bg-noche-700">
+          <!-- Luna (se ve en modo claro) -->
+          <svg class="h-5 w-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+          <!-- Sol (se ve en modo oscuro) -->
+          <svg class="hidden h-5 w-5 dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+
+        <a href="#reservar" class="hidden rounded-full bg-terracota px-5 py-2.5 font-semibold text-white transition-colors hover:bg-terracota-oscuro focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota sm:inline-block dark:bg-brasa dark:text-noche-900 dark:hover:bg-luna">Reservar</a>
+
+        <!-- Botón hamburguesa (solo celular) -->
+        <button id="btn-menu" type="button" aria-controls="menu-movil" aria-expanded="false" aria-label="Abrir menú"
+          class="flex h-11 w-11 items-center justify-center rounded-lg text-tierra hover:bg-arena-200 focus-visible:outline-2 focus-visible:outline-terracota md:hidden dark:text-luna dark:hover:bg-noche-700">
+          <svg id="icono-abrir" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg id="icono-cerrar" class="hidden h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Menú desplegable en celular -->
+    <div id="menu-movil" class="hidden border-t border-arena-200 md:hidden dark:border-noche-700">
+      <ul class="space-y-1 px-4 py-3">
+        <li><a href="#tours" class="enlace-movil block rounded-lg px-3 py-3 font-semibold hover:bg-arena-200 focus-visible:outline-2 focus-visible:outline-terracota dark:hover:bg-noche-700">Tours</a></li>
+        <li><a href="#nosotros" class="enlace-movil block rounded-lg px-3 py-3 font-semibold hover:bg-arena-200 focus-visible:outline-2 focus-visible:outline-terracota dark:hover:bg-noche-700">Nosotros</a></li>
+        <li><a href="#preguntas" class="enlace-movil block rounded-lg px-3 py-3 font-semibold hover:bg-arena-200 focus-visible:outline-2 focus-visible:outline-terracota dark:hover:bg-noche-700">Preguntas</a></li>
+        <li><a href="#reservar" class="enlace-movil block rounded-lg bg-terracota px-3 py-3 text-center font-semibold text-white hover:bg-terracota-oscuro focus-visible:outline-2 focus-visible:outline-terracota dark:bg-brasa dark:text-noche-900">Reservar mi tour</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- =========================== HERO =========================== -->
+    <section id="inicio" class="bg-noche text-luna">
+      <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 md:py-20 lg:grid-cols-2 lg:py-24">
+        <div>
+          <p class="mb-3 text-sm font-bold tracking-widest text-brasa uppercase">Villavieja · Huila · Colombia</p>
+          <h1 class="font-titulo text-4xl leading-tight font-bold sm:text-5xl lg:text-6xl">Mira el cielo más limpio del Huila</h1>
+          <p class="mt-5 max-w-xl text-lg text-luna-suave">Tours guiados de astronomía, senderismo y astrofotografía en el Desierto de la Tatacoa, con guías locales y grupos pequeños.</p>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="#tours" class="rounded-full bg-brasa px-6 py-3 text-center font-bold text-noche-900 transition-colors hover:bg-luna focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-luna">Ver tours</a>
+            <a href="#reservar" class="rounded-full border-2 border-luna px-6 py-3 text-center font-bold text-luna transition-colors hover:bg-luna hover:text-noche focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-luna">Reservar una noche</a>
+          </div>
+          <dl class="mt-10 grid grid-cols-3 gap-4 border-t border-luna/20 pt-6">
+            <div><dt class="text-sm text-luna-suave">Grupos de</dt><dd class="font-titulo text-2xl font-bold">máx. 10</dd></div>
+            <div><dt class="text-sm text-luna-suave">Duración</dt><dd class="font-titulo text-2xl font-bold">2–4 h</dd></div>
+            <div><dt class="text-sm text-luna-suave">Salidas</dt><dd class="font-titulo text-2xl font-bold">diarias</dd></div>
+          </dl>
+        </div>
+        <img src="./assets/img/hero-cielo.svg" width="1200" height="700"
+          alt="Ilustración del cielo estrellado con la Vía Láctea sobre las formaciones rojas del Desierto de la Tatacoa"
+          class="w-full rounded-3xl shadow-2xl">
+      </div>
+    </section>
+
+    <!-- =========================== TOURS (tarjetas + filtro) =========================== -->
+    <section id="tours" class="scroll-mt-20 py-16 md:py-20" aria-labelledby="titulo-tours">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <div class="max-w-2xl">
+          <h2 id="titulo-tours" class="font-titulo text-3xl font-bold md:text-4xl">Nuestros tours</h2>
+          <p class="mt-3 text-lg text-tierra-suave dark:text-luna-suave">Elige la experiencia que más te guste. Todos incluyen guía local, hidratación y seguro de viaje.</p>
+        </div>
+
+        <!-- Filtro de tours (componente extra) -->
+        <div class="mt-8 flex flex-wrap gap-2" role="group" aria-label="Filtrar tours por categoría">
+          <button type="button" data-filtro="todos" aria-pressed="true" class="filtro rounded-full border-2 border-terracota px-4 py-2 text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota aria-pressed:bg-terracota aria-pressed:text-white dark:border-brasa dark:aria-pressed:bg-brasa dark:aria-pressed:text-noche-900">Todos</button>
+          <button type="button" data-filtro="astronomia" aria-pressed="false" class="filtro rounded-full border-2 border-terracota px-4 py-2 text-sm font-bold transition-colors hover:bg-arena-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota aria-pressed:bg-terracota aria-pressed:text-white dark:border-brasa dark:hover:bg-noche-700 dark:aria-pressed:bg-brasa dark:aria-pressed:text-noche-900">Astronomía</button>
+          <button type="button" data-filtro="senderismo" aria-pressed="false" class="filtro rounded-full border-2 border-terracota px-4 py-2 text-sm font-bold transition-colors hover:bg-arena-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota aria-pressed:bg-terracota aria-pressed:text-white dark:border-brasa dark:hover:bg-noche-700 dark:aria-pressed:bg-brasa dark:aria-pressed:text-noche-900">Senderismo</button>
+          <button type="button" data-filtro="fotografia" aria-pressed="false" class="filtro rounded-full border-2 border-terracota px-4 py-2 text-sm font-bold transition-colors hover:bg-arena-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota aria-pressed:bg-terracota aria-pressed:text-white dark:border-brasa dark:hover:bg-noche-700 dark:aria-pressed:bg-brasa dark:aria-pressed:text-noche-900">Fotografía</button>
+        </div>
+        <p id="conteo-tours" class="mt-3 text-sm text-tierra-suave dark:text-luna-suave" aria-live="polite">Mostrando 6 tours</p>
+
+        <ul id="lista-tours" class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <li data-categoria="astronomia" class="tarjeta">
+            <article class="flex h-full flex-col overflow-hidden rounded-2xl border border-arena-200 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-noche-700 dark:bg-noche-700">
+              <img src="./assets/img/tour-astronomia.svg" width="600" height="360" alt="Telescopio apuntando a la Vía Láctea sobre el desierto" class="aspect-[5/3] w-full object-cover" loading="lazy">
+              <div class="flex flex-1 flex-col p-5">
+                <p class="text-sm font-bold text-terracota-oscuro dark:text-brasa">Astronomía · 3 horas</p>
+                <h3 class="mt-1 font-titulo text-xl font-bold">Noche de estrellas</h3>
+                <p class="mt-2 flex-1 text-tierra-suave dark:text-luna-suave">Recorrido por las constelaciones a ojo desnudo y con telescopio, guiado por un astrónomo aficionado de la región.</p>
+                <div class="mt-4 flex items-center justify-between">
+                  <p class="font-titulo text-lg font-bold">$95.000 <span class="text-sm font-normal text-tierra-suave dark:text-luna-suave">COP / persona</span></p>
+                  <a href="#reservar" data-tour="Noche de estrellas" class="btn-reservar rounded-full bg-terracota px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-terracota-oscuro focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota dark:bg-brasa dark:text-noche-900 dark:hover:bg-luna">Reservar <span class="sr-only">Noche de estrellas</span></a>
+                </div>
+              </div>
+            </article>
+          </li>
+          <li data-categoria="astronomia" class="tarjeta">
+            <article class="flex h-full flex-col overflow-hidden rounded-2xl border border-arena-200 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-noche-700 dark:bg-noche-700">
+              <img src="./assets/img/tour-luna.svg" width="600" height="360" alt="Ilustración de la Luna creciente con cráteres y del planeta Saturno sobre el desierto" class="aspect-[5/3] w-full object-cover" loading="lazy">
+              <div class="flex flex-1 flex-col p-5">
+                <p class="text-sm font-bold text-terracota-oscuro dark:text-brasa">Astronomía · 2 horas</p>
+                <h3 class="mt-1 font-titulo text-xl font-bold">Planetas y Luna</h3>
+                <p class="mt-2 flex-1 text-tierra-suave dark:text-luna-suave">Observación de los cráteres lunares y de los planetas visibles según la temporada. Ideal para familias.</p>
+                <div class="mt-4 flex items-center justify-between">
+                  <p class="font-titulo text-lg font-bold">$70.000 <span class="text-sm font-normal text-tierra-suave dark:text-luna-suave">COP / persona</span></p>
+                  <a href="#reservar" data-tour="Planetas y Luna" class="btn-reservar rounded-full bg-terracota px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-terracota-oscuro focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota dark:bg-brasa dark:text-noche-900 dark:hover:bg-luna">Reservar <span class="sr-only">Planetas y Luna</span></a>
+                </div>
+              </div>
+            </article>
+          </li>
+          <li data-categoria="senderismo" class="tarjeta">
+            <article class="flex h-full flex-col overflow-hidden rounded-2xl border border-arena-200 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-noche-700 dark:bg-noche-700">
+              <img src="./assets/img/tour-cuzco.svg" width="600" height="360" alt="Laberinto de cárcavas rojas de El Cuzco iluminado por el amanecer" class="aspect-[5/3] w-full object-cover" loading="lazy">
+              <div class="flex flex-1 flex-col p-5">
+                <p class="text-sm font-bold text-terracota-oscuro dark:text-brasa">Senderismo · 3 horas</p>
+                <h3 class="mt-1 font-titulo text-xl font-bold">Amanecer en El Cuzco</h3>
+                <p class="mt-2 flex-1 text-tierra-suave dark:text-luna-suave">Caminata suave por el laberinto rojo antes de que suba el calor, con paradas para conocer la flora del bosque seco.</p>
+                <div class="mt-4 flex items-center justify-between">
+                  <p class="font-titulo text-lg font-bold">$60.000 <span class="text-sm font-normal text-tierra-suave dark:text-luna-suave">COP / persona</span></p>
+                  <a href="#reservar" data-tour="Amanecer en El Cuzco" class="btn-reservar rounded-full bg-terracota px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-terracota-oscuro focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota dark:bg-brasa dark:text-noche-900 dark:hover:bg-luna">Reservar <span class="sr-only">Amanecer en El Cuzco</span></a>
+                </div>
+              </div>
+            </article>
+          </li>
+          <li data-categoria="senderismo" class="tarjeta">
+            <article class="flex h-full flex-col overflow-hidden rounded-2xl border border-arena-200 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-noche-700 dark:bg-noche-700">
+              <img src="./assets/img/tour-hoyos.svg" width="600" height="360" alt="Formaciones grises de Los Hoyos junto a una piscina natural" class="aspect-[5/3] w-full object-cover" loading="lazy">
+              <div class="flex flex-1 flex-col p-5">
+                <p class="text-sm font-bold text-terracota-oscuro dark:text-brasa">Senderismo · 4 horas</p>
+                <h3 class="mt-1 font-titulo text-xl font-bold">Los Hoyos y piscina natural</h3>
+                <p class="mt-2 flex-1 text-tierra-suave dark:text-luna-suave">Recorrido por el desierto gris y descanso en la piscina natural. Incluye refrigerio típico opita.</p>
+                <div class="mt-4 flex items-center justify-between">
+                  <p class="font-titulo text-lg font-bold">$65.000 <span class="text-sm font-normal text-tierra-suave dark:text-luna-suave">COP / persona</span></p>
+                  <a href="#reservar" data-tour="Los Hoyos y piscina natural" class="btn-reservar rounded-full bg-terracota px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-terracota-oscuro focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota dark:bg-brasa dark:text-noche-900 dark:hover:bg-luna">Reservar <span class="sr-only">Los Hoyos y piscina natural</span></a>
+                </div>
+              </div>
+            </article>
+          </li>
+          <li data-categoria="fotografia" class="tarjeta">
+            <article class="flex h-full flex-col overflow-hidden rounded-2xl border border-arena-200 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-noche-700 dark:bg-noche-700">
+              <img src="./assets/img/tour-fotografia.svg" width="600" height="360" alt="Cámara en trípode fotografiando un cielo con estrellas fugaces" class="aspect-[5/3] w-full object-cover" loading="lazy">
+              <div class="flex flex-1 flex-col p-5">
+                <p class="text-sm font-bold text-terracota-oscuro dark:text-brasa">Fotografía · 4 horas</p>
+                <h3 class="mt-1 font-titulo text-xl font-bold">Astrofotografía para principiantes</h3>
+                <p class="mt-2 flex-1 text-tierra-suave dark:text-luna-suave">Aprende a fotografiar la Vía Láctea con tu cámara o celular: exposición larga, enfoque al infinito y composición.</p>
+                <div class="mt-4 flex items-center justify-between">
+                  <p class="font-titulo text-lg font-bold">$120.000 <span class="text-sm font-normal text-tierra-suave dark:text-luna-suave">COP / persona</span></p>
+                  <a href="#reservar" data-tour="Astrofotografía para principiantes" class="btn-reservar rounded-full bg-terracota px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-terracota-oscuro focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota dark:bg-brasa dark:text-noche-900 dark:hover:bg-luna">Reservar <span class="sr-only">Astrofotografía para principiantes</span></a>
+                </div>
+              </div>
+            </article>
+          </li>
+          <li data-categoria="fotografia" class="tarjeta">
+            <article class="flex h-full flex-col overflow-hidden rounded-2xl border border-arena-200 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-noche-700 dark:bg-noche-700">
+              <img src="./assets/img/tour-cuzco.svg" width="600" height="360" alt="Paisaje rojo de El Cuzco con luz cálida del atardecer" class="aspect-[5/3] w-full object-cover" loading="lazy">
+              <div class="flex flex-1 flex-col p-5">
+                <p class="text-sm font-bold text-terracota-oscuro dark:text-brasa">Fotografía · 2 horas</p>
+                <h3 class="mt-1 font-titulo text-xl font-bold">Atardecer fotográfico</h3>
+                <p class="mt-2 flex-1 text-tierra-suave dark:text-luna-suave">Sesión al atardecer en El Cuzco para retratos y paisajes con la mejor luz del día.</p>
+                <div class="mt-4 flex items-center justify-between">
+                  <p class="font-titulo text-lg font-bold">$85.000 <span class="text-sm font-normal text-tierra-suave dark:text-luna-suave">COP / persona</span></p>
+                  <a href="#reservar" data-tour="Atardecer fotográfico" class="btn-reservar rounded-full bg-terracota px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-terracota-oscuro focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota dark:bg-brasa dark:text-noche-900 dark:hover:bg-luna">Reservar <span class="sr-only">Atardecer fotográfico</span></a>
+                </div>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- =========================== NOSOTROS =========================== -->
+    <section id="nosotros" class="scroll-mt-20 bg-noche py-16 text-luna md:py-20" aria-labelledby="titulo-nosotros">
+      <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 md:grid-cols-2">
+        <img src="./assets/img/nosotros.svg" width="600" height="360" alt="Ilustración de guías y visitantes alrededor de un telescopio al atardecer" class="w-full rounded-3xl" loading="lazy">
+        <div>
+          <h2 id="titulo-nosotros" class="font-titulo text-3xl font-bold md:text-4xl">Guías de aquí, cielo de todos</h2>
+          <p class="mt-4 text-lg text-luna-suave">Somos un emprendimiento de jóvenes de Villavieja que convirtió su amor por el cielo en una forma de mostrar el desierto con respeto. Trabajamos en grupos pequeños, sin dejar huella y apoyando a las familias de la zona.</p>
+          <ul class="mt-6 space-y-3">
+            <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-brasa" aria-hidden="true"></span><span><strong class="font-bold">Turismo responsable:</strong> senderos marcados y cero basura.</span></li>
+            <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-brasa" aria-hidden="true"></span><span><strong class="font-bold">Equipo propio:</strong> telescopios, linternas rojas y sillas reclinables.</span></li>
+            <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-brasa" aria-hidden="true"></span><span><strong class="font-bold">Seguridad:</strong> transporte desde Villavieja y guías con primeros auxilios.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== PREGUNTAS FRECUENTES (acordeón) =========================== -->
+    <section id="preguntas" class="scroll-mt-20 py-16 md:py-20" aria-labelledby="titulo-preguntas">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6">
+        <h2 id="titulo-preguntas" class="font-titulo text-3xl font-bold md:text-4xl">Preguntas frecuentes</h2>
+        <div class="mt-8 divide-y divide-arena-200 rounded-2xl border border-arena-200 bg-white dark:divide-noche-700 dark:border-noche-700 dark:bg-noche-700" id="acordeon">
+          <div>
+            <h3>
+              <button type="button" class="acordeon-btn flex w-full items-center justify-between gap-4 px-5 py-4 text-left font-titulo text-lg font-bold hover:bg-arena focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-terracota dark:hover:bg-noche" aria-expanded="false" aria-controls="resp-1" id="preg-1">
+                ¿Qué pasa si está nublado?
+                <svg class="icono-acordeon h-5 w-5 shrink-0 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+            </h3>
+            <div id="resp-1" role="region" aria-labelledby="preg-1" hidden class="px-5 pb-5 text-tierra-suave dark:text-luna-suave">
+              <p>Si el cielo está cubierto, te ofrecemos cambiar la fecha sin costo o hacer la charla de astronomía con proyección en nuestra sede.</p>
+            </div>
+          </div>
+          <div>
+            <h3>
+              <button type="button" class="acordeon-btn flex w-full items-center justify-between gap-4 px-5 py-4 text-left font-titulo text-lg font-bold hover:bg-arena focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-terracota dark:hover:bg-noche" aria-expanded="false" aria-controls="resp-2" id="preg-2">
+                ¿Qué debo llevar?
+                <svg class="icono-acordeon h-5 w-5 shrink-0 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+            </h3>
+            <div id="resp-2" role="region" aria-labelledby="preg-2" hidden class="px-5 pb-5 text-tierra-suave dark:text-luna-suave">
+              <p>Ropa fresca, zapatos cerrados, gorra, bloqueador y una chaqueta ligera para la noche. Nosotros ponemos el agua.</p>
+            </div>
+          </div>
+          <div>
+            <h3>
+              <button type="button" class="acordeon-btn flex w-full items-center justify-between gap-4 px-5 py-4 text-left font-titulo text-lg font-bold hover:bg-arena focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-terracota dark:hover:bg-noche" aria-expanded="false" aria-controls="resp-3" id="preg-3">
+                ¿Pueden ir niños?
+                <svg class="icono-acordeon h-5 w-5 shrink-0 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+            </h3>
+            <div id="resp-3" role="region" aria-labelledby="preg-3" hidden class="px-5 pb-5 text-tierra-suave dark:text-luna-suave">
+              <p>Sí. El tour “Planetas y Luna” está pensado para familias. En los senderos largos recomendamos niños desde los 8 años.</p>
+            </div>
+          </div>
+          <div>
+            <h3>
+              <button type="button" class="acordeon-btn flex w-full items-center justify-between gap-4 px-5 py-4 text-left font-titulo text-lg font-bold hover:bg-arena focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-terracota dark:hover:bg-noche" aria-expanded="false" aria-controls="resp-4" id="preg-4">
+                ¿Cómo pago mi reserva?
+                <svg class="icono-acordeon h-5 w-5 shrink-0 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+            </h3>
+            <div id="resp-4" role="region" aria-labelledby="preg-4" hidden class="px-5 pb-5 text-tierra-suave dark:text-luna-suave">
+              <p>Después de enviar el formulario te contactamos para confirmar cupo. Puedes pagar por transferencia o en efectivo el día del tour.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== FORMULARIO DE RESERVA =========================== -->
+    <section id="reservar" class="scroll-mt-20 bg-arena-200 py-16 md:py-20 dark:bg-noche-700" aria-labelledby="titulo-reservar">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6">
+        <h2 id="titulo-reservar" class="font-titulo text-3xl font-bold md:text-4xl">Reserva tu tour</h2>
+        <p class="mt-3 text-lg text-tierra-suave dark:text-luna-suave">Los campos marcados con <span class="text-error dark:text-error-claro" aria-hidden="true">*</span> son obligatorios.</p>
+
+        <form id="form-reserva" class="mt-8 grid gap-5 rounded-2xl bg-white p-6 shadow-sm sm:grid-cols-2 md:p-8 dark:bg-noche-900" novalidate>
+          <div class="sm:col-span-2">
+            <label for="nombre" class="block font-bold">Nombre completo <span class="text-error dark:text-error-claro" aria-hidden="true">*</span></label>
+            <input id="nombre" name="nombre" type="text" autocomplete="name" required aria-describedby="error-nombre"
+              class="campo mt-2 w-full rounded-xl border-2 border-arena-200 bg-white px-4 py-3 text-tierra placeholder:text-tierra-suave focus:border-terracota focus:outline-none focus:ring-4 focus:ring-terracota/20 aria-invalid:border-error dark:border-noche-700 dark:bg-noche-700 dark:text-luna dark:placeholder:text-luna-suave dark:aria-invalid:border-error-claro" placeholder="Ej.: María Fernanda Rojas">
+            <p id="error-nombre" class="mensaje-error mt-1 hidden text-sm font-semibold text-error dark:text-error-claro"></p>
+          </div>
+
+          <div>
+            <label for="correo" class="block font-bold">Correo electrónico <span class="text-error dark:text-error-claro" aria-hidden="true">*</span></label>
+            <input id="correo" name="correo" type="email" autocomplete="email" required aria-describedby="error-correo"
+              class="campo mt-2 w-full rounded-xl border-2 border-arena-200 bg-white px-4 py-3 text-tierra placeholder:text-tierra-suave focus:border-terracota focus:outline-none focus:ring-4 focus:ring-terracota/20 aria-invalid:border-error dark:border-noche-700 dark:bg-noche-700 dark:text-luna dark:placeholder:text-luna-suave dark:aria-invalid:border-error-claro" placeholder="tucorreo@ejemplo.com">
+            <p id="error-correo" class="mensaje-error mt-1 hidden text-sm font-semibold text-error dark:text-error-claro"></p>
+          </div>
+
+          <div>
+            <label for="telefono" class="block font-bold">Celular <span class="font-normal text-tierra-suave dark:text-luna-suave">(opcional)</span></label>
+            <input id="telefono" name="telefono" type="tel" autocomplete="tel" inputmode="numeric" aria-describedby="error-telefono"
+              class="campo mt-2 w-full rounded-xl border-2 border-arena-200 bg-white px-4 py-3 text-tierra placeholder:text-tierra-suave focus:border-terracota focus:outline-none focus:ring-4 focus:ring-terracota/20 aria-invalid:border-error dark:border-noche-700 dark:bg-noche-700 dark:text-luna dark:placeholder:text-luna-suave dark:aria-invalid:border-error-claro" placeholder="3001234567">
+            <p id="error-telefono" class="mensaje-error mt-1 hidden text-sm font-semibold text-error dark:text-error-claro"></p>
+          </div>
+
+          <div class="sm:col-span-2">
+            <label for="tour" class="block font-bold">Tour <span class="text-error dark:text-error-claro" aria-hidden="true">*</span></label>
+            <select id="tour" name="tour" required aria-describedby="error-tour"
+              class="campo mt-2 w-full rounded-xl border-2 border-arena-200 bg-white px-4 py-3 text-tierra focus:border-terracota focus:outline-none focus:ring-4 focus:ring-terracota/20 aria-invalid:border-error dark:border-noche-700 dark:bg-noche-700 dark:text-luna dark:aria-invalid:border-error-claro">
+              <option value="">Selecciona un tour</option>
+              <option>Noche de estrellas</option>
+              <option>Planetas y Luna</option>
+              <option>Amanecer en El Cuzco</option>
+              <option>Los Hoyos y piscina natural</option>
+              <option>Astrofotografía para principiantes</option>
+              <option>Atardecer fotográfico</option>
+            </select>
+            <p id="error-tour" class="mensaje-error mt-1 hidden text-sm font-semibold text-error dark:text-error-claro"></p>
+          </div>
+
+          <div>
+            <label for="fecha" class="block font-bold">Fecha <span class="text-error dark:text-error-claro" aria-hidden="true">*</span></label>
+            <input id="fecha" name="fecha" type="date" required aria-describedby="error-fecha"
+              class="campo mt-2 w-full rounded-xl border-2 border-arena-200 bg-white px-4 py-3 text-tierra focus:border-terracota focus:outline-none focus:ring-4 focus:ring-terracota/20 aria-invalid:border-error dark:border-noche-700 dark:bg-noche-700 dark:text-luna dark:[color-scheme:dark] dark:aria-invalid:border-error-claro">
+            <p id="error-fecha" class="mensaje-error mt-1 hidden text-sm font-semibold text-error dark:text-error-claro"></p>
+          </div>
+
+          <div>
+            <label for="personas" class="block font-bold">Número de personas <span class="text-error dark:text-error-claro" aria-hidden="true">*</span></label>
+            <input id="personas" name="personas" type="number" min="1" max="10" required aria-describedby="error-personas"
+              class="campo mt-2 w-full rounded-xl border-2 border-arena-200 bg-white px-4 py-3 text-tierra placeholder:text-tierra-suave focus:border-terracota focus:outline-none focus:ring-4 focus:ring-terracota/20 aria-invalid:border-error dark:border-noche-700 dark:bg-noche-700 dark:text-luna dark:placeholder:text-luna-suave dark:aria-invalid:border-error-claro" placeholder="De 1 a 10">
+            <p id="error-personas" class="mensaje-error mt-1 hidden text-sm font-semibold text-error dark:text-error-claro"></p>
+          </div>
+
+          <div class="sm:col-span-2">
+            <label for="comentarios" class="block font-bold">Comentarios <span class="font-normal text-tierra-suave dark:text-luna-suave">(opcional)</span></label>
+            <textarea id="comentarios" name="comentarios" rows="3"
+              class="campo mt-2 w-full rounded-xl border-2 border-arena-200 bg-white px-4 py-3 text-tierra placeholder:text-tierra-suave focus:border-terracota focus:outline-none focus:ring-4 focus:ring-terracota/20 dark:border-noche-700 dark:bg-noche-700 dark:text-luna dark:placeholder:text-luna-suave" placeholder="Cuéntanos si hay alguna condición especial o celebración"></textarea>
+          </div>
+
+          <div class="sm:col-span-2">
+            <div class="flex items-start gap-3">
+              <input id="acepto" name="acepto" type="checkbox" required aria-describedby="error-acepto" class="mt-1 h-5 w-5 shrink-0 accent-terracota focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota">
+              <label for="acepto">Acepto que me contacten para confirmar la reserva y el tratamiento de mis datos. <span class="text-error dark:text-error-claro" aria-hidden="true">*</span></label>
+            </div>
+            <p id="error-acepto" class="mensaje-error mt-1 hidden text-sm font-semibold text-error dark:text-error-claro"></p>
+          </div>
+
+          <div class="sm:col-span-2">
+            <button type="submit" id="btn-enviar" class="w-full rounded-full bg-terracota px-6 py-3.5 font-bold text-white transition-colors hover:bg-terracota-oscuro focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto dark:bg-brasa dark:text-noche-900 dark:hover:bg-luna">Enviar solicitud de reserva</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================== PIE DE PÁGINA =========================== -->
+  <footer class="bg-noche-900 text-luna">
+    <div class="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3">
+      <div>
+        <p class="font-titulo text-lg font-bold">Tatacoa Nocturna</p>
+        <p class="mt-2 text-sm text-luna-suave">Tours de astronomía y naturaleza en el Desierto de la Tatacoa.</p>
+      </div>
+      <div>
+        <h2 class="font-titulo font-bold">Visítanos</h2>
+        <p class="mt-2 text-sm text-luna-suave">Villavieja, Huila (punto de encuentro en el parque principal).<br>Salidas todos los días: 4:00 p. m. y 7:30 p. m.</p>
+      </div>
+      <div>
+        <h2 class="font-titulo font-bold">Síguenos</h2>
+        <ul class="mt-2 flex gap-4 text-sm">
+          <li><a href="#inicio" class="underline decoration-brasa underline-offset-4 hover:text-brasa focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brasa">Instagram</a></li>
+          <li><a href="#inicio" class="underline decoration-brasa underline-offset-4 hover:text-brasa focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brasa">Facebook</a></li>
+          <li><a href="#inicio" class="underline decoration-brasa underline-offset-4 hover:text-brasa focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brasa">TikTok</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-luna/15">
+      <p class="mx-auto max-w-6xl px-4 py-5 text-sm text-luna-suave sm:px-6">© <span id="anio">2026</span> Tatacoa Nocturna. Emprendimiento ficticio creado con fines académicos por Nelson Steven Marroquín Ortiz · FET.</p>
+    </div>
+  </footer>
+
+  <!-- =========================== TOAST =========================== -->
+  <div id="toast" role="status" aria-live="polite" aria-atomic="true"
+    class="pointer-events-none fixed inset-x-4 bottom-4 z-[70] flex translate-y-4 items-start gap-3 rounded-2xl bg-exito p-4 text-white opacity-0 shadow-2xl transition duration-300 sm:right-6 sm:left-auto sm:w-96">
+    <svg class="mt-0.5 h-6 w-6 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>
+    <p id="toast-texto" class="flex-1 font-semibold"></p>
+    <button id="toast-cerrar" type="button" aria-label="Cerrar notificación" class="-m-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-white">
+      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+
+  <script src="./js/main.js" defer></script>
+</body>
+</html>

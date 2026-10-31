@@ -1,0 +1,20 @@
+{
+  "name": "tatacoa-nocturna",
+  "version": "1.0.0",
+  "description": "Landing page de tours de astronomía en el Desierto de la Tatacoa hecha con HTML, Tailwind CSS 4 y JavaScript puro.",
+  "scripts": {
+    "dev": "npx @tailwindcss/cli -i ./src/input.css -o ./dist/output.css --watch",
+    "build": "npx @tailwindcss/cli -i ./src/input.css -o ./dist/output.css --minify"
+  },
+  "author": "Nelson Steven Marroquín Ortiz",
+  "license": "MIT",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.0",
+    "tailwindcss": "^4.1.0"
+  },
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "keywords": []
+}
